@@ -89,6 +89,6 @@ ENV/
 .ropeproject
 
 # temporary
-tests/
+tests/integration
 
 .DS_Store
