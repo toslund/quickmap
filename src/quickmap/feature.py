@@ -65,12 +65,27 @@ class FeatureCollection(Feature):
         else:
             self.features = []
 
+    # def load_features(self, data):
+    #     """Load features from geojson data"""
+    #     features = FeatureCollection.get_features(read_geojson(data))
+    #     self.features.append(features)
+
+    def load_geojson(self, data):
+        """Load features from geojson data"""
+        features = FeatureCollection.get_features(read_geojson(data))
+        self.features.extend(features)
+
     @classmethod
     def from_geosjon(cls, data):
-        return cls(features=cls.load_features(read_geojson(data)))
+        return cls(cls.load_geojson(data))
+
+    # @staticmethod
+    # def load_geosjon(data):
+    #     """Load features from geojson data"""
+    #     return FeatureCollection.get_features(read_geojson(data))
 
     @staticmethod
-    def load_features(data):
+    def get_features(data):
         if isinstance(data, list):
             raise ValueError('Types list is not valid geojson object. Iterate lists containing valid geojson objects')      
         if data['type'] == "FeatureCollection":
@@ -85,6 +100,9 @@ class FeatureCollection(Feature):
     @property
     def bounding_box(self): #TODO Naive bb that does not factor in the antimeridian. Replace.
         _bounding_boxes =  [n.bounding_box for n in self.features]
+        if not _bounding_boxes:
+            print('empty list')
+            return BoundingBox()
         x_min = min([n.x_min for n in _bounding_boxes])
         x_max = max([n.x_max for n in _bounding_boxes])
         y_min = min([n.y_min for n in _bounding_boxes])

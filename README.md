@@ -3,14 +3,11 @@ Quickmap is a python to create quick visualisation of geographic data. Geographi
 
 ## Usage
 ```python
-from quickmap import QuickMap, FeatureCollection
+from quickmap import QuickMap
 
 quick_map = QuickMap()
-fc = FeatureCollection.from_geosjon(geojson)
-quick_map.feature_collection = fc
-quick_map.canvas.stitch_tiles()
-quick_map.draw_feature_collection()
-quick_map.canvas.save_image()
+quick_map.load_geosjon('points.geojson')
+quick_map.save_png('example.png')
 ```
 
 ### Point

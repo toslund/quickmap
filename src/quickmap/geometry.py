@@ -23,6 +23,13 @@ class BoundingBox:
     y_min: Optional[float] = sys.float_info.max
     y_max: Optional[float] = sys.float_info.min
 
+    def __eq__(self, other): 
+        if not isinstance(other, BoundingBox):
+            # don't attempt to compare against unrelated types
+            return NotImplemented
+
+        return self.x_min == other.x_min and self.x_max == other.x_max and self.y_min == other.y_min and self.y_max == other.y_max
+
     def as_points(self):
         points = [(self.x_min, self.y_min), (self.x_min, self.y_max), (self.x_max, self.y_max), (self.x_max, self.y_min)]
         return [BasePoint(x=xy[0], y=xy[1]) for xy in set([(self.x_min, self.y_min), (self.x_min, self.y_max), (self.x_max, self.y_max), (self.x_max, self.y_min)])]
