@@ -6,9 +6,10 @@ Quickmap is a python to create quick visualisation of geographic data. Geographi
 from quickmap import QuickMap
 
 quick_map = QuickMap()
-quick_map.load_geosjon('points.geojson')
+quick_map.load_geosjon('state_capitals.geojson')
 quick_map.save_png('example.png')
 ```
+![State Capitals Output](docs/imgs/state_capitals.png)
 
 ### Point
 Example of the class Point.
@@ -28,3 +29,9 @@ tile = Tile.for_point(point, zoom=7)
 pip install -e .
 
 ```
+
+<style type="text/css">
+    img {
+        max-width: 350px;
+    }
+</style>
