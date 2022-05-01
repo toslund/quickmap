@@ -75,10 +75,6 @@ class FeatureCollection(Feature):
         features = FeatureCollection.get_features(read_geojson(data))
         self.features.extend(features)
 
-    @classmethod
-    def from_geosjon(cls, data):
-        return cls(cls.load_geojson(data))
-
     # @staticmethod
     # def load_geosjon(data):
     #     """Load features from geojson data"""
