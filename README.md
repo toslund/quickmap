@@ -1,5 +1,5 @@
 # quickmap
-Quickmap is a python to create quick visualisation of geographic data. Geographic data can be loaded with geojson or added through the api. Basemaps come from xyz tiles.
+Quickmap is a python package for creating quick visualizations of geographic data. Geographic data can be loaded with geojson or added through the api. Basemaps come from xyz tiles.
 
 ## Usage
 ```python
